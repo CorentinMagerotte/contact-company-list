@@ -65,12 +65,30 @@ const typeDefs = gql`
 let contacts = [
     { id: '1', name: 'John Doe', email: 'john@example.com', phone: '123-456-7890' },
     { id: '2', name: 'Jane Smith', email: 'jane@example.com', phone: '987-654-3210' },
+    { id: '3', name: 'Mike Johnson', email: 'mike.johnson@example.com', phone: '555-123-4567' },
+    { id: '4', name: 'Emily Davis', email: 'emily.davis@example.com', phone: '123-789-4560' },
+    { id: '5', name: 'Robert Wilson', email: 'robert.wilson@example.com', phone: '456-789-1230' },
+    { id: '6', name: 'Sarah Lee', email: 'sarah.lee@example.com', phone: '789-123-4560' },
+    { id: '7', name: 'David Brown', email: 'david.brown@example.com', phone: '321-654-9870' },
+    { id: '8', name: 'Linda White', email: 'linda.white@example.com', phone: '654-321-7890' },
+    { id: '9', name: 'James Green', email: 'james.green@example.com', phone: '789-654-1234' },
+    { id: '10', name: 'Patricia Black', email: 'patricia.black@example.com', phone: '555-789-1230' }
 ];
+
 
 let companies = [
     { id: '3', name: 'TechCorp', industry: 'Technology', contactEmail: 'info@techcorp.com' },
     { id: '4', name: 'HealthInc', industry: 'Healthcare', contactEmail: 'contact@healthinc.com' },
+    { id: '5', name: 'FinanceSolutions', industry: 'Finance', contactEmail: 'support@financesolutions.com' },
+    { id: '6', name: 'EduWorld', industry: 'Education', contactEmail: 'info@eduworld.com' },
+    { id: '7', name: 'GreenEnergy', industry: 'Energy', contactEmail: 'contact@greenenergy.com' },
+    { id: '8', name: 'Foodies', industry: 'Food & Beverage', contactEmail: 'info@foodies.com' },
+    { id: '9', name: 'AutoTech', industry: 'Automotive', contactEmail: 'sales@autotech.com' },
+    { id: '10', name: 'MediLife', industry: 'Healthcare', contactEmail: 'contact@medilife.com' },
+    { id: '11', name: 'RetailMax', industry: 'Retail', contactEmail: 'support@retailmax.com' },
+    { id: '12', name: 'CloudNet', industry: 'Technology', contactEmail: 'info@cloudnet.com' }
 ];
+
 
 // Define the resolvers
 const resolvers = {
@@ -104,7 +122,9 @@ const resolvers = {
             if (entityType === 'CONTACT') {
                 const contactIndex = contacts.findIndex((c) => c.id === id);
                 if (contactIndex >= 0) {
+                    console.log(phone)
                     contacts[contactIndex] = { ...contacts[contactIndex], name, email, phone };
+                    console.log(contacts[contactIndex])
                     return contacts[contactIndex];
                 }
             }

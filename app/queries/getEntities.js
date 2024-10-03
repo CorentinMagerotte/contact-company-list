@@ -7,9 +7,11 @@ export const GET_ENTITIES = gql`
       name
       ... on Contact {
         email
+        phone
       }
       ... on Company {
         industry
+        contactEmail
       }
     }
   }

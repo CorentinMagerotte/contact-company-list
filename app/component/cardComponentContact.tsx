@@ -10,7 +10,7 @@ import {
 export default function CardComponentContact({entity, index, handleCardPress} : {entity: Contact, index: number, handleCardPress: (entity: Contact) => void}) {
 
     return (
-        <Card key={index} onClick={() => handleCardPress(entity)} style={{ cursor: 'pointer' }}>
+        <Card key={index} onClick={() => handleCardPress(entity)} style={{ cursor: 'pointer' }} className="w-[400px] border-l-blue-600 border-l-4">
             <CardHeader>
                 <CardTitle>{entity.name}</CardTitle>
                 <CardDescription>
