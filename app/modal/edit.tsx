@@ -12,6 +12,7 @@ import { Button } from "@headlessui/react";
 import {UPDATE_CONTACT_MUTATION} from "@/app/queries/updateContact";
 import client from "@/app/lib/apollo-client";
 import {UPDATE_COMPANY_MUTATION} from "@/app/queries/updateCompany";
+import {GET_ENTITIES} from "@/app/queries/getEntities";
 
 type Inputs = {
     email: string;
@@ -51,6 +52,12 @@ export default function ModalEdit({ entity, onClose, reload } : { entity: Entity
                         email: data.email,
                         phone: data.phone,
                     },
+                    refetchQueries: [
+                        {
+                            query: GET_ENTITIES,
+                        },
+                    ],
+                    awaitRefetchQueries: true,
                 });
                 console.log("Mutation result:", result);
             } else {
@@ -62,6 +69,12 @@ export default function ModalEdit({ entity, onClose, reload } : { entity: Entity
                         industry: data.industry,
                         contactEmail: data.contactEmail
                     },
+                    refetchQueries: [
+                        {
+                            query: GET_ENTITIES,
+                        },
+                    ],
+                    awaitRefetchQueries: true,
                 });
                 console.log("Mutation result:", result);
             }
