@@ -12,9 +12,9 @@ export const UPDATE_CONTACT_MUTATION = gql`
       }
     ) {
       id
+      name
       ... on Contact {
         email
-        name
         phone
       }
     }

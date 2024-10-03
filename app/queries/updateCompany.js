@@ -12,6 +12,7 @@ export const UPDATE_COMPANY_MUTATION = gql`
       }
     ) {
       id
+      name
       ... on Company {
         contactEmail
         industry

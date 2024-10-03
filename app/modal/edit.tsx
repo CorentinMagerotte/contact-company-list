@@ -12,7 +12,6 @@ import { Button } from "@headlessui/react";
 import {UPDATE_CONTACT_MUTATION} from "@/app/queries/updateContact";
 import client from "@/app/lib/apollo-client";
 import {UPDATE_COMPANY_MUTATION} from "@/app/queries/updateCompany";
-import ContactForm from "@/app/modal/component/contactForm";
 
 type Inputs = {
     email: string;
@@ -219,7 +218,7 @@ export default function ModalEdit({ entity, onClose, reload } : { entity: Entity
 
                 <DialogFooter>
                     <Button type="submit" onClick={handleSubmit(onSubmit)}
-                            class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                            className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
                         Save changes
                     </Button>
                 </DialogFooter>
