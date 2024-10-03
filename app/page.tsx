@@ -12,12 +12,14 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import ModalEdit from "@/app/modal/edit";
+import CardComponentContact from "@/app/component/cardComponentContact";
+import CardComponentCompany from "@/app/component/cardComponentCompany";
+
 export default function Home() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<EntityUnion[]>(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [entityToOpen, setEntityToOpen] = useState(false);
+  const [entityToOpen, setEntityToOpen] = useState<EntityUnion | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,8 +36,7 @@ export default function Home() {
     fetchData().then(() => setLoading(false));
   }, []);
 
-    const handleCardPress = (entity) => {
-        setIsOpen(true);
+    const handleCardPress = (entity: EntityUnion) => {
         setEntityToOpen(entity)
     };
 
@@ -49,30 +50,16 @@ export default function Home() {
 
           {data && (
               <div className="list-disc flex flex-row space-x-10">
-                {data.map((entity, index) => {
-                    const isContact = entity.__typename === "Contact";
-                    return (
-                        <Card key={index} onClick={() => handleCardPress(entity)} style={{ cursor: 'pointer' }}>
-                            <CardHeader>
-                                <CardTitle>{entity.name}</CardTitle>
-                                <CardDescription>
-                                    {isContact
-                                        ? <div className="flex flex-row items-center"><MdContacts size={20} color="black" style={{marginRight: 5}}/><span>Contact</span></div>
-                                        : <div className="flex flex-row items-center"><MdApartment size={20} color="black" style={{marginRight: 5}}/><span>Company</span></div>
-                                    }
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <p>{isContact ? `Email: ${entity.email}` : `Industry: ${entity.industry}`}</p>
-                            </CardContent>
-                        </Card>
-                    )
+                {data.map((entity: EntityUnion, index: number) => {
+                    return entity.__typename === "Contact"
+                        ? <CardComponentContact entity={entity as Contact} index={index} handleCardPress={handleCardPress}/>
+                        : <CardComponentCompany entity={entity as Company} index={index} handleCardPress={handleCardPress}/>
                 })}
               </div>
           )}
         </main>
 
-        {isOpen && <ModalEdit entity={entityToOpen} onClose={() => setIsOpen(false)} />}
+        {entityToOpen !== null && <ModalEdit entity={entityToOpen} onClose={() => setEntityToOpen(null)} />}
 
       </div>
   );
