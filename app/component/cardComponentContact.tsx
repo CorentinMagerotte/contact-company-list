@@ -15,7 +15,7 @@ export default function CardComponentContact({entity, index, handleCardPress} : 
                 <CardTitle>{entity.name}</CardTitle>
                 <CardDescription>
                     <div className="flex flex-row items-center">
-                        <MdContacts size={20} color="black" style={{marginRight: 5}}/>
+                        <MdContacts size={20} style={{marginRight: 5}}/>
                         <span>Contact</span>
                     </div>
                 </CardDescription>

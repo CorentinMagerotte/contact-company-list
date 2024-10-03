@@ -15,7 +15,7 @@ export default function CardComponentCompany({entity, index, handleCardPress} : 
                 <CardTitle>{entity.name}</CardTitle>
                 <CardDescription>
                     <div className="flex flex-row items-center">
-                        <MdApartment size={20} color="black" style={{marginRight: 5}}/>
+                        <MdApartment size={20} style={{marginRight: 5}}/>
                         <span>Company</span>
                     </div>
                 </CardDescription>
