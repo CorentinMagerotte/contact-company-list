@@ -32,7 +32,7 @@ export default function ModalEdit({ entity, onClose } : { entity: EntityUnion, o
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         console.log("Form data:", data);
-        onClose(); // Fermer le modal après la soumission
+        onClose();
     };
 
     const handleOnOpenChange = (isOpen: boolean) => {

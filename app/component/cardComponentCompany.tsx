@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card"
 
 export default function CardComponentCompany({entity, index, handleCardPress} : {entity: Company, index: number, handleCardPress: (entity: Company) => void}) {
+
     return (
         <Card key={index} onClick={() => handleCardPress(entity)} style={{ cursor: 'pointer' }}>
             <CardHeader>

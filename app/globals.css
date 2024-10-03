@@ -12,11 +12,6 @@ body {
   }
 }
 
-.card {
-  border-width: thin;
-  flex: content;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
