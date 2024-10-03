@@ -21,7 +21,12 @@ export default function CardComponentContact({entity, index, handleCardPress} : 
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <p> {`Email: ${entity.email}`}</p>
+                <div className="grid grid-cols-[1fr_4fr] gap-4">
+                    <p>Email: </p>
+                    <p className="break-words">{entity.email}</p>
+                    <p>Phone: </p>
+                    <p className="break-words">{entity.phone}</p>
+                </div>
             </CardContent>
         </Card>
     );

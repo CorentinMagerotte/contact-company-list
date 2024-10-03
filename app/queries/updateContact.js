@@ -17,9 +17,6 @@ export const UPDATE_CONTACT_MUTATION = gql`
         name
         phone
       }
-      ... on Company {
-        contactEmail
-      }
     }
   }
 `;
