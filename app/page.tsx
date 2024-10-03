@@ -17,8 +17,6 @@ export default function Home() {
   const [entityToOpen, setEntityToOpen] = useState<EntityUnion | null>(null);
   const [reload, setReload] = useState<boolean>(false);
   const [isNewHandled, setIsNewHandled] = useState<boolean>(false);
-  const [isNewContact, setIsNewContact] = useState<boolean>(false);
-  const [isNewCompany, setIsNewCompany] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,15 +43,6 @@ export default function Home() {
       setIsNewHandled(true);
     }
 
-    const handleNewSelected = useCallback((selected: string) => {
-      setIsNewHandled(false);
-      if (selected === 'CONTACT') {
-        setIsNewContact(true);
-      } else if (selected === 'COMPANY') {
-        setIsNewCompany(true)
-      }
-    }, []);
-
   return (
       <div
           className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] ">
@@ -62,12 +51,14 @@ export default function Home() {
 
           {error && <p>Error : {error.message}</p>}
 
-          {(!loading && !error) && <Button
-            type={"button"}
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded self-end"
-            onClick={handleNew}
-            >Add</Button>
-          }
+          {(!loading && !error) && (
+            <Button
+              type={"button"}
+              className="bg-blue-500 text-white font-bold py-2 px-4 rounded self-end"
+              onClick={handleNew}>
+              Create contact/company
+            </Button>
+          )}
 
           {data && (
               <div className="flex flex-wrap gap-4 justify-center w-full">
@@ -82,9 +73,7 @@ export default function Home() {
 
         {entityToOpen !== null && <ModalEdit entity={entityToOpen} onClose={() => setEntityToOpen(null)} reload={() => setReload(!reload)} />}
 
-        {isNewHandled && <ModalNew onClose={() => setIsNewHandled(false)} onSelect={handleNewSelected} />}
-
-        {isNewContact && <ModalNewContact onClose={() => setIsNewContact(false)} reload={() => setReload(!reload)} />}
+        {isNewHandled && <ModalNew onClose={() => setIsNewHandled(false)} reload={() => setReload(!reload)}/>}
 
       </div>
   );
