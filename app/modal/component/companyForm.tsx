@@ -3,7 +3,10 @@
  */
 export default function CompanyForm({ handleSubmit, onSubmit, register, errors }) {
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+                handleSubmit(onSubmit)();
+            }}}>
             <div className="flex space-x-4">
                 <div className="w-1/2">
                     <label>Name</label>

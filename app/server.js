@@ -77,16 +77,16 @@ let contacts = [
 
 
 let companies = [
-    { id: '3', name: 'TechCorp', industry: 'Technology', contactEmail: 'info@techcorp.com' },
-    { id: '4', name: 'HealthInc', industry: 'Healthcare', contactEmail: 'contact@healthinc.com' },
-    { id: '5', name: 'FinanceSolutions', industry: 'Finance', contactEmail: 'support@financesolutions.com' },
-    { id: '6', name: 'EduWorld', industry: 'Education', contactEmail: 'info@eduworld.com' },
-    { id: '7', name: 'GreenEnergy', industry: 'Energy', contactEmail: 'contact@greenenergy.com' },
-    { id: '8', name: 'Foodies', industry: 'Food & Beverage', contactEmail: 'info@foodies.com' },
-    { id: '9', name: 'AutoTech', industry: 'Automotive', contactEmail: 'sales@autotech.com' },
-    { id: '10', name: 'MediLife', industry: 'Healthcare', contactEmail: 'contact@medilife.com' },
-    { id: '11', name: 'RetailMax', industry: 'Retail', contactEmail: 'support@retailmax.com' },
-    { id: '12', name: 'CloudNet', industry: 'Technology', contactEmail: 'info@cloudnet.com' }
+    { id: '1', name: 'TechCorp', industry: 'Technology', contactEmail: 'info@techcorp.com' },
+    { id: '2', name: 'HealthInc', industry: 'Healthcare', contactEmail: 'contact@healthinc.com' },
+    { id: '3', name: 'FinanceSolutions', industry: 'Finance', contactEmail: 'support@financesolutions.com' },
+    { id: '4', name: 'EduWorld', industry: 'Education', contactEmail: 'info@eduworld.com' },
+    { id: '5', name: 'GreenEnergy', industry: 'Energy', contactEmail: 'contact@greenenergy.com' },
+    { id: '6', name: 'Foodies', industry: 'Food & Beverage', contactEmail: 'info@foodies.com' },
+    { id: '7', name: 'AutoTech', industry: 'Automotive', contactEmail: 'sales@autotech.com' },
+    { id: '8', name: 'MediLife', industry: 'Healthcare', contactEmail: 'contact@medilife.com' },
+    { id: '9', name: 'RetailMax', industry: 'Retail', contactEmail: 'support@retailmax.com' },
+    { id: '10', name: 'CloudNet', industry: 'Technology', contactEmail: 'info@cloudnet.com' }
 ];
 
 
