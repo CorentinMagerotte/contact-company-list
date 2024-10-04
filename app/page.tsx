@@ -13,22 +13,30 @@ import {Toggle} from "@/components/ui/toggle";
 const CardView = dynamic(() => import('./pages/cardView'));
 const GridView = dynamic(() => import('./pages/gridView'));
 export default function Home() {
+  // Dark and light mode
   const { theme, toggleTheme } = useTheme();
+  // List of Contact and Company
   const [data, setData] = useState<EntityUnion[]>(null);
+  // Error returned by the loading of data
   const [error, setError] = useState(null);
+  // State of loading
   const [loading, setLoading] = useState<boolean>(true);
+  // The entity who want to display
   const [entityToOpen, setEntityToOpen] = useState<EntityUnion | null>(null);
+  // If the list of data need to be reloaded
   const [reload, setReload] = useState<boolean>(false);
+  // If the new modal need to be displayed
   const [isNewHandled, setIsNewHandled] = useState<boolean>(false);
+  // Type of view
   const [view, setView] = useState<'card' | 'grid'>('card');
 
+  // Load the data from DB
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await client.query({
           query: GET_ENTITIES,
         });
-        console.log(data.getEntities)
         setData(data.getEntities);
       } catch (err) {
         setError(err.message);
@@ -38,22 +46,25 @@ export default function Home() {
     fetchData().then(() => setLoading(false));
   }, [reload]);
 
+    // Called when a card is pressed, open the modal detail
     const handleCardPress = useCallback((entity: EntityUnion) => {
         setEntityToOpen(entity)
     }, []);
 
+    // Called when the "new" button is pressed, show the modal
     const handleNew = () => {
       setIsNewHandled(true);
     }
 
+    // Called when the "view" button is pressed, switch the view
     const handleSwitchView = () => {
       setView((prevState) => prevState === 'card' ? 'grid' : 'card')
     }
 
   return (
-      <div
-          className="items-center justify-items-center min-h-screen p-8 font-[family-name:var(--font-geist-sans)] ">
+      <div className="items-center justify-items-center min-h-screen p-8 font-[family-name:var(--font-geist-sans)] ">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+
           {loading && <p>Loading...</p>}
 
           {error && <p>Error : {error.message}</p>}

@@ -1,5 +1,7 @@
+/**
+ * Render the company form used for edition and creation with submit, register and error message
+ */
 export default function CompanyForm({ handleSubmit, onSubmit, register, errors }) {
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex space-x-4">

@@ -7,15 +7,24 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 
-export default function CardComponentCompany({entity, index, handleCardPress} : {entity: Company, index: number, handleCardPress: (entity: Company) => void}) {
-
+/**
+ * Company card component: displays company details and handles click events
+ * @param entity The company object to display
+ * @param index The index of the company object from the mixed list
+ * @param handleCardPress The func called when the card is clicked
+ */
+export default function CardComponentCompany({entity, index, handleCardPress}: { entity: Company, index: number, handleCardPress: (entity: Company) => void }) {
     return (
-        <Card key={index} onClick={() => handleCardPress(entity)} style={{ cursor: 'pointer' }} className="w-[400px] border-l-green-600 border-l-4 overflow-hidden">
+        <Card
+            key={index}
+            onClick={() => handleCardPress(entity)}
+            style={{ cursor: 'pointer' }}
+            className="w-[400px] border-l-green-600 border-l-4 overflow-hidden">
             <CardHeader>
                 <CardTitle>{entity.name}</CardTitle>
                 <CardDescription>
                     <div className="flex flex-row items-center">
-                        <MdApartment size={20} style={{marginRight: 5}}/>
+                        <MdApartment size={20} style={{marginRight: 5}} />
                         <span>Company</span>
                     </div>
                 </CardDescription>

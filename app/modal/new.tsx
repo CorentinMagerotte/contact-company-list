@@ -24,14 +24,23 @@ type Inputs = {
     contactEmail: string;
 };
 
+/**
+ * Modal of creation a new contact or company item
+ * @param onClose Function to close the modal
+ * @param reload Function to reload the parent list
+ */
 export default function ModalNew({ onClose, reload } : { onClose: () => void, reload: () => void }) {
+
     const [newSelected, setNewSelected] = useState<string | null>(null);
+
+    // Init the form state and func
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>();
 
+    // Called when the form is confirmed, create the object with the new data then reload the parent list and close the modal
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         try {
 
@@ -66,7 +75,6 @@ export default function ModalNew({ onClose, reload } : { onClose: () => void, re
                     awaitRefetchQueries: true,
                 });
             }
-
         } catch (e) {
             console.error("Error updating :", e);
         }
@@ -74,10 +82,13 @@ export default function ModalNew({ onClose, reload } : { onClose: () => void, re
         reload();
         onClose();
     };
+
+    // Fill the field newSelected when the selected value is clicked
     const handleNewSelected = (selected: string) => {
         setNewSelected(selected);
     }
 
+    // Render the good form according to the value selected
     const renderForm = () => {
         if (newSelected === 'CONTACT') {
             return <ContactForm onSubmit={onSubmit} handleSubmit={handleSubmit} errors={errors} register={register} />

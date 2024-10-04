@@ -122,9 +122,7 @@ const resolvers = {
             if (entityType === 'CONTACT') {
                 const contactIndex = contacts.findIndex((c) => c.id === id);
                 if (contactIndex >= 0) {
-                    console.log(phone)
                     contacts[contactIndex] = { ...contacts[contactIndex], name, email, phone };
-                    console.log(contacts[contactIndex])
                     return contacts[contactIndex];
                 }
             }

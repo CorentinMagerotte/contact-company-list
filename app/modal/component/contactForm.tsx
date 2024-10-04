@@ -1,3 +1,6 @@
+/**
+ * Render the contact form used for edition and creation with submit, register and error message
+ */
 export default function ContactForm({ handleSubmit, onSubmit, register, errors }) {
 
     return (

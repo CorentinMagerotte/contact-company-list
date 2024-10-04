@@ -24,9 +24,18 @@ type Inputs = {
     contactEmail: string;
 };
 
+/**
+ * Modal of edition for contact and company component
+ * @param entity The entity (Contact or Company) to edit
+ * @param onClose Function to close the modal
+ * @param reload Function to reload the parent list
+ */
 export default function ModalEdit({ entity, onClose, reload } : { entity: EntityUnion, onClose: () => void, reload: () => void }) {
+
+    // Check if the entity to edit is a contact or a company
     const [isContact] = useState(entity.__typename === "Contact");
 
+    // Init the form state and func
     const {
         register,
         handleSubmit,
@@ -34,6 +43,7 @@ export default function ModalEdit({ entity, onClose, reload } : { entity: Entity
         setValue,
     } = useForm<Inputs>();
 
+    // Fill the form with the value who exist already
     useEffect(() => {
         setValue("name", entity.name);
         setValue('email', entity.email);
@@ -42,11 +52,12 @@ export default function ModalEdit({ entity, onClose, reload } : { entity: Entity
         setValue("contactEmail", entity.contactEmail);
     }, [entity, setValue]);
 
+    // Called when the form is confirmed, update the object with the new data then reload the parent list and close the modal
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         try {
 
             if (isContact) {
-                const result = await client.mutate({
+                await client.mutate({
                     mutation: UPDATE_CONTACT_MUTATION,
                     variables: {
                         id: entity.id,
@@ -61,9 +72,8 @@ export default function ModalEdit({ entity, onClose, reload } : { entity: Entity
                     ],
                     awaitRefetchQueries: true,
                 });
-                console.log("Mutation result:", result);
             } else {
-                const result = await client.mutate({
+                await client.mutate({
                     mutation: UPDATE_COMPANY_MUTATION,
                     variables: {
                         id: entity.id,
@@ -78,7 +88,6 @@ export default function ModalEdit({ entity, onClose, reload } : { entity: Entity
                     ],
                     awaitRefetchQueries: true,
                 });
-                console.log("Mutation result:", result);
             }
 
         } catch (e) {
@@ -88,6 +97,7 @@ export default function ModalEdit({ entity, onClose, reload } : { entity: Entity
         onClose();
     };
 
+    // Close the modal when the openChange of Dialog is called
     const handleOnOpenChange = (isOpen: boolean) => {
         if (!isOpen) {
             onClose();
