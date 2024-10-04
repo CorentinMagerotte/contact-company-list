@@ -35,7 +35,7 @@ const GridView = ({data, reload} : {data: EntityUnion[], reload: () => void }) =
 
     return (
         <div className="ag-theme-quartz-dark" style={{ width: '93vw', height: '80vh' }}>
-            <Select onValueChange={handleFilterValueChange}>
+            <Select onValueChange={handleFilterValueChange} defaultValue={selectedFilter}>
                 <SelectTrigger className="w-64 mb-7 text-black dark:text-white" defaultValue={selectedFilter} value={selectedFilter}>
                     <SelectValue placeholder="Select an option" color={'black'} />
                 </SelectTrigger>
